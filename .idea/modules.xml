@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cross-talk.iml" filepath="$PROJECT_DIR$/cross-talk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cross-talk-model/cross-talk-model.iml" filepath="$PROJECT_DIR$/cross-talk-model/cross-talk-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cross-talk-provider/cross-talk-provider.iml" filepath="$PROJECT_DIR$/cross-talk-provider/cross-talk-provider.iml" />
+    </modules>
+  </component>
+</project>

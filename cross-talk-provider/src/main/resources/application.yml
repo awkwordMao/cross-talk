@@ -2,5 +2,5 @@ server:
   port: 8880
 spring:
   thymeleaf:
-    prefix: classpath:/resources/templates/
-    suffix: .html
+    prefix: "classpath:/templates/"
+    suffix: '.html'

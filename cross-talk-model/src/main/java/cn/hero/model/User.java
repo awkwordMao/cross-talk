@@ -7,7 +7,7 @@ package cn.hero.model;
  */
 public class User {
 
-    private Integer id;
+    private Integer userId;
     private String userName;
     private String password;
 
@@ -15,11 +15,11 @@ public class User {
     }
 
     public Integer getId() {
-        return id;
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

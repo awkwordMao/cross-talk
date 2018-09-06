@@ -1,6 +1,7 @@
 package cn.hero.provider.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,9 +14,17 @@ public class InitController {
      * 登录界面
      * @return
      */
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String init(){
-        return "index";
+        return "login";
     }
 
+    /**
+     * 进入注册界面
+     * @return
+     */
+    @GetMapping("/toregister")
+    public String toRegister(){
+        return "register";
+    }
 }

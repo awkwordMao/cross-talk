@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Cross {
 
-    private Integer id;
+    private Integer crossId;
     private String type; //类型
     private String content;  //内容
     private String creatBy;  //发表人
@@ -19,11 +19,11 @@ public class Cross {
     }
 
     public Integer getId() {
-        return id;
+        return crossId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer crossId) {
+        this.crossId = crossId;
     }
 
     public String getType() {

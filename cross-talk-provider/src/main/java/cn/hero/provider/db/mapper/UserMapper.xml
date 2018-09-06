@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hero.provider.db.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="cn.hero.model.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+
+    <insert id="insertUser" parameterType="cn.hero.model.User">
+        insert into tb_user (user_name, password) values (#{userName}, #{password})
+    </insert>
+
+    <select id="getUserByName" resultMap="BaseResultMap">
+        select * from tb_user where user_name=#{userName}
+    </select>
+</mapper>

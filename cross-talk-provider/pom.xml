@@ -37,6 +37,8 @@
 
     <build>
         <resources>
+            <!--mavan编译时，将src/main/java/**/*.xml的文件引入，没有这一步会报错；
+            另一种解决办法是将 **mapper.xml放在resources目录下-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -44,9 +46,9 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+            <!--</resource>-->
         </resources>
     </build>
 </project>

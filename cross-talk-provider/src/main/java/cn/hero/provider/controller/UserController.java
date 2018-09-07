@@ -33,9 +33,8 @@ public class UserController {
         LOGGER.info("----------------" + "userName: " + userName + "password: " + password);
         User user = userService.getUserByName(userName);
         if(userName.equals(user.getUserName()) && password.equals(user.getPassword())){
-            return "index";
-        }else{
 
+            return "main";
         }
         return "login";
     }

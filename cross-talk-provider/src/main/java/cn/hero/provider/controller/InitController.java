@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class InitController {
     /**
-     * 登录界面
+     * 首页
      * @return
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String init(){
-        return "login";
+        return "index";
     }
 
+    @GetMapping("/tologin")
+    public String tologin(){
+        return "login";
+    }
     /**
      * 进入注册界面
      * @return

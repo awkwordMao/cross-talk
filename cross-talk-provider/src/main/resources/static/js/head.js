@@ -1,3 +1,4 @@
+
 /**
  * 显示QQ二维码
  *
@@ -53,3 +54,4 @@ function showMe() {
         content: '/img/me.jpg'
     });
 }
+

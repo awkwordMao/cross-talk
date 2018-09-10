@@ -33,20 +33,15 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    //Demo
-    layui.use('form', function(){
-        var form = layui.form;
-
-        //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            alert(data);
-            return false;
-        });
+<!--//注意：导航 依赖 element 模块，否则无法进行功能性操作-->
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['carousel', 'form', 'layer', 'element'], function(){
+        var carousel = layui.carousel,
+            form = layui.form,
+            layer = layui.layer,
+            element = layui.element;
     });
 </script>
+<script type="text/javascript" th:src="@{/js/head.js}"></script>
 </body>
 </html>

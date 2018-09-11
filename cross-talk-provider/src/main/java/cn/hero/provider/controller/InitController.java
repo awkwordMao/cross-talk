@@ -1,9 +1,12 @@
 package cn.hero.provider.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.websocket.server.PathParam;
 
 /**
  * 入口处理
@@ -34,5 +37,20 @@ public class InitController {
     @GetMapping("/toregister")
     public String toRegister(){
         return "register";
+    }
+
+    /**
+     * 进入添加 cross 界面
+     * @return
+     */
+    @GetMapping("/toaddcross")
+    public String toAddCross(@PathParam("userName") String userName, Model model){
+        System.out.println("-----------------" + userName);
+        if(("").equals(userName)){
+            return "login";
+        }else{
+            model.addAttribute("userName", userName);
+            return "addcross";
+        }
     }
 }

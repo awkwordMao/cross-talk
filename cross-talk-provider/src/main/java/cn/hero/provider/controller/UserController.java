@@ -37,7 +37,6 @@ public class UserController {
         User user = userService.getUserByName(userName);
         if(userName.equals(user.getUserName()) && password.equals(user.getPassword())){
             model.addAttribute("userName", userName);
-            Cookie cookie = new Cookie("userName", userName);
             return "index";
         }
         return "login";

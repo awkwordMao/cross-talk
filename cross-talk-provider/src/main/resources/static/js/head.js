@@ -55,3 +55,11 @@ function showMe() {
     });
 }
 
+/**
+ * 判断是否登录，如果登录，将"登录"、"注册" 替换为 "欢迎：userName
+ */
+window.onload=function(){
+    if($("#temp").text() !== ''){
+        $(".lg").css('display','none');
+    }
+}

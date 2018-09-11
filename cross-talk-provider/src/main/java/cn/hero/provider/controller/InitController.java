@@ -19,6 +19,10 @@ public class InitController {
         return "index";
     }
 
+    /**
+     * 登录界面
+     * @return
+     */
     @GetMapping("/tologin")
     public String tologin(){
         return "login";

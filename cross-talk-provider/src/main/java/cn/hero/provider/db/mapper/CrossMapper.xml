@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hero.provider.db.dao.CrossMapper">
+    <resultMap id="BaseResultMap" type="cn.hero.model.Cross">
+        <id column="cross_id" jdbcType="INTEGER" property="crossId"></id>
+        <result column="content" jdbcType="VARCHAR" property="content"></result>
+        <result column="great_number" jdbcType="INTEGER" property="greatNumber"></result>
+        <result column="creat_by" jdbcType="VARCHAR" property="creatBy"></result>
+        <result column="creat_time" jdbcType="DATE" property="creatTime"></result>
+    </resultMap>
+
+    <select id="findAllCross" resultMap="BaseResultMap">
+        select * from tb_cross_talk 
+    </select>
+    
+    <insert id="insertCross" parameterType="cn.hero.model.Cross">
+        insert into tb_cross_talk (content,creat_by,creat_time) values (#{content},#{creatBy},#{creatTime})
+    </insert>
+
+    <update id="updateCross" parameterType="java.lang.Integer">
+        update tb_cross_talk set great_number = great_number+1 where cross_id = #{crossId}
+    </update>
+</mapper>

@@ -5,7 +5,13 @@
     <title>sign in</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
 </head>
+<script type="text/javascript" th:src="@{/js/head.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js" th:src="@{/jquery/jquery-3.3.1.min.js}" charset="utf-8"></script>
 <body>
+<div>
+    <div th:include="head"></div>
+</div>
 <div class="layui-container" >
     <div class="layui-row">
         <div class="layui-col-md4" th:bgcolor="red"></div>
@@ -33,7 +39,7 @@
         </div>
     </div>
 </div>
-<!--//注意：导航 依赖 element 模块，否则无法进行功能性操作-->
+</body>
 <script type="text/javascript" th:inline="javascript">
     layui.use(['carousel', 'form', 'layer', 'element'], function(){
         var carousel = layui.carousel,
@@ -42,6 +48,4 @@
             element = layui.element;
     });
 </script>
-<script type="text/javascript" th:src="@{/js/head.js}"></script>
-</body>
 </html>

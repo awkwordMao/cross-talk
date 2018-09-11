@@ -28,7 +28,7 @@
             <a href="/toregister">注册<span class="layui-badge-dot"></span></a>
         </li>
         <li class="layui-nav-item">
-            <a class="myself" href="/toregister" th:text="${userName}"></a>
+            <a class="myself" href="/" th:text="${userName}"></a>
         </li>
         <a  style="display: none"  th:text="${userName}" id="temp"></a>
     </ul>
@@ -40,23 +40,13 @@
 <script type="text/javascript" th:src="@{/jquery/jquery-3.3.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.js }"></script>
 <script type="text/javascript" th:src="@{/js/head.js }"></script>
-<!--&lt;!&ndash;//注意：导航 依赖 element 模块，否则无法进行功能性操作&ndash;&gt;-->
-<!--<script type="text/javascript" th:inline="javascript">-->
-    <!--layui.use(['carousel', 'form', 'layer', 'element'], function(){-->
-        <!--var carousel = layui.carousel,-->
-            <!--form = layui.form,-->
-            <!--layer = layui.layer,-->
-            <!--element = layui.element;-->
-    <!--});-->
-<!--</script>-->
-
 <!--判断是否登录，如果登录，将"登录"、"注册" 替换为 "欢迎：userName"-->
 <script type="text/javascript" th:inline="javascript">
-    window.onload=function(){
-        if($("#temp").text() !== ''){
-            $(".lg").css('display','none');
-        }
-    }
+//    window.onload=function(){
+//        if($("#temp").text() !== ''){
+//            $(".lg").css('display','none');
+//        }
+//    }
 </script>
 
 </html>

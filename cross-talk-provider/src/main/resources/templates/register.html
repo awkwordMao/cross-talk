@@ -5,7 +5,14 @@
     <title>register</title>
     <link rel="stylesheet" href="../static/layui/css/layui.css" th:href="@{/layui/css/layui.css}" media="all" />
 </head>
+<script type="text/javascript" th:src="@{/js/head.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js" th:src="@{/jquery/jquery-3.3.1.min.js}" charset="utf-8"></script>
+
 <body>
+<div>
+    <div th:include="head"></div>
+</div>
 <div class="layui-container" >
     <div class="layui-row">
         <div class="layui-col-md4" th:bgcolor="red"></div>
@@ -54,4 +61,12 @@
     });
 </script>
 </body>
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['carousel', 'form', 'layer', 'element'], function(){
+        var carousel = layui.carousel,
+            form = layui.form,
+            layer = layui.layer,
+            element = layui.element;
+    });
+</script>
 </html>

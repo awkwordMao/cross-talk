@@ -20,4 +20,8 @@
     <update id="updateCross" parameterType="java.lang.Integer">
         update tb_cross_talk set great_number = great_number+1 where cross_id = #{crossId}
     </update>
+
+    <select id="findById" resultMap="BaseResultMap">
+        select * from tb_cross_talk where cross_id = #{crossId}
+    </select>
 </mapper>

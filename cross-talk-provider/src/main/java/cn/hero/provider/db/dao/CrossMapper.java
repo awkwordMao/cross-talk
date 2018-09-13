@@ -19,4 +19,6 @@ public interface CrossMapper {
     int updateCross(Integer crossId);
 
     List<Cross> findAllCross();
+
+    Cross findById(Integer crossId);
 }

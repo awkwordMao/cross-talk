@@ -3,6 +3,7 @@ package cn.hero.provider.controller;
 import cn.hero.model.Cross;
 import cn.hero.provider.service.CrossService;
 import cn.hero.provider.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +53,13 @@ public class CrossController {
         crossService.updateCross(crossId);
         model.addAttribute("userName", userName);
         return "redirect:/?userName=" + userName;
+//        JSONObject jsonObject = null;
+//        crossService.updateCross(crossId);
+//        Cross cross = crossService.findById(crossId);
+//        String greatNumber = String.valueOf(cross.getGreatNumber());
+//        jsonObject = new JSONObject();
+//        jsonObject.put("greatNumber", greatNumber);
+//        return jsonObject.toJSONString();
     }
 
     /**

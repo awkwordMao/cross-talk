@@ -21,8 +21,9 @@
             <div class="layui-card-body" th:text="${cross.content}">
 
             </div>
-            <div>
-                <i class="layui-icon layui-icon-star"><a th:href="@{/cross/update(crossId=${cross.crossId},userName=${userName})}" th:text="${cross.greatNumber}"></a></i>
+            <div style="color: mediumturquoise">
+                <i class="layui-icon layui-icon-star"><a th:href="@{/cross/update(crossId=${cross.crossId},userName=${userName})}" th:text="'赞一下：' + ${cross.greatNumber}"></a></i>
+                <!--<i class="layui-icon layui-icon-star"><a name="crossId" href="javascript:void(0)" onclick="getGreatNumber()" th:href="" th:text="'赞一下：' + ${cross.greatNumber}"></a></i>-->
             </div>
         </div>
     </div>
@@ -36,6 +37,21 @@
             layer = layui.layer,
             element = layui.element;
     });
+    function getGreatNumber() {
+        $.ajax({
+            url: '/cross/update',
+            type: 'get',
+            data: {
+                crossId: $(a[name=crossId]).val()
+            },
+            dataType: 'json',
+            success:function (result) {
+                alert(result.greatNumber);
+
+            }
+
+        })
+    }
 
 
 </script>

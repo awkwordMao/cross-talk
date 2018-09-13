@@ -30,4 +30,8 @@ public class CrossService {
     public List<Cross> crossList(){
         return crossMapper.findAllCross();
     }
+
+    public Cross findById(Integer crossId){
+        return crossMapper.findById(crossId);
+    }
 }

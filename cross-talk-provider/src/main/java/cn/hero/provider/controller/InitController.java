@@ -18,8 +18,13 @@ public class InitController {
      * @return
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String init(){
-        return "index";
+    public String init(@PathParam("userName") String userName, Model model){
+        System.out.println(userName);
+        model.addAttribute("userName", userName);
+        if(userName == null){
+            userName = "";
+        }
+        return "redirect:/cross/list?userName=" + userName;
     }
 
     /**

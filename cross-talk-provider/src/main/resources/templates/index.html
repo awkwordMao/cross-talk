@@ -12,9 +12,20 @@
 <div class="layui-layout-admin">
     <!--引入导航代码-->
     <div th:include="head"></div>
-
 </div>
+<div class="layui-container">
 
+    <div th:each="cross : ${crossList}">
+        <div class="layui-card">
+            <div class="layui-card-body" th:text="${cross.content}">
+
+            </div>
+            <div>
+                <i class="layui-icon layui-icon-star"><a th:href="@{/cross/update(userName=${userName})}" th:text="${cross.greatNumber}"></a></i>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <!--//注意：导航 依赖 element 模块，否则无法进行功能性操作-->
 <script type="text/javascript" th:inline="javascript">
@@ -24,5 +35,7 @@
             layer = layui.layer,
             element = layui.element;
     });
+
+
 </script>
 </html>

@@ -31,13 +31,13 @@ public class UserController {
      * @param userName
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(@PathParam("userName") String userName, @PathParam("password") String password, Model model, HttpServletRequest request){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@PathParam("userName") String userName, @PathParam("password") String password, Model model){
         LOGGER.info("----------------" + "userName: " + userName + "password: " + password);
         User user = userService.getUserByName(userName);
         if(userName.equals(user.getUserName()) && password.equals(user.getPassword())){
             model.addAttribute("userName", userName);
-            return "index";
+            return "redirect:/?userName=" + userName;
         }
         return "login";
     }

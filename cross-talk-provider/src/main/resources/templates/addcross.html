@@ -12,15 +12,19 @@
 <div>
     <div th:include="head"></div>
 </div>
+<div style="display: none">
+
+</div>
 <div class="layui-container" >
     <div class="layui-row">
         <div class="layui-col-md4" th:bgcolor="red"></div>
         <div class="layui-col-md4 layui-col-md-offset4">
-            <form class="layui-form layui-form-pane" action="/cross/add">
+            <form class="layui-form layui-form-pane" action="/cross/add" method="post">
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">cross_talk</label>
                     <div class="layui-input-block">
-                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="userName" style="display: none" th:text="${userName}"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">

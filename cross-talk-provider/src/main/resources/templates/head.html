@@ -8,9 +8,9 @@
 <body>
 <div th:fragment="head">
     <ul class="layui-nav layui-bg-green" style="text-align: center;">
-        <li class="layui-nav-item"><a href="/">首页</a></li>
+        <li class="layui-nav-item"><a href="/" th:href="@{/(userName=${userName})}">首页</a></li>
         <li class="layui-nav-item"><a href="/">TOP10排行</a></li>
-        <li class="layui-nav-item"><a href="">经典笑话</a></li>
+        <li class="layui-nav-item"><a href="" th:href="@{/(userName=${userName})}">经典笑话</a></li>
         <li class="layui-nav-item"><a href="">搞笑图片</a></li>
         <li class="layui-nav-item"><a id="addcross" href="/toaddcross" th:href="@{/toaddcross(userName=${userName})}">讲个笑话</a></li>
 

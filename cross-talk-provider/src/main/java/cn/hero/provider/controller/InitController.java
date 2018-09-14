@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.websocket.server.PathParam;
 
@@ -18,13 +19,11 @@ public class InitController {
      * @return
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String init(@PathParam("userName") String userName, Model model){
+    public String init(@PathParam("userName") String userName, Model model, RedirectAttributes attributes){
         System.out.println(userName);
-        model.addAttribute("userName", userName);
-        if(userName == null){
-            userName = "";
-        }
-        return "redirect:/cross/list?userName=" + userName;
+//        model.addAttribute("userName", userName);
+        attributes.addFlashAttribute("userName", userName);
+        return "redirect:/cross/list/";
     }
 
     /**

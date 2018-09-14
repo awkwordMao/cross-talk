@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 
 /**
@@ -32,12 +34,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@PathParam("userName") String userName, @PathParam("password") String password, Model model){
+    public String login(@PathParam("userName") String userName, @PathParam("password") String password, Model model, RedirectAttributes attributes){
         LOGGER.info("----------------" + "userName: " + userName + "password: " + password);
         User user = userService.getUserByName(userName);
         if(userName.equals(user.getUserName()) && password.equals(user.getPassword())){
-            model.addAttribute("userName", userName);
-            return "redirect:/?userName=" + userName;
+//            model.addAttribute("userName", user.getUserName());
+            attributes.addFlashAttribute("userName", userName);
+            return "redirect:/cross/list/";
         }
         return "login";
     }
@@ -48,7 +51,7 @@ public class UserController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@PathParam("userName") String userName, @PathParam("password") String password, @PathParam("password2") String password2){
         LOGGER.info("1: " + userName + "2: " + password + "3: " + password2);
         if(password.equals(password2)){

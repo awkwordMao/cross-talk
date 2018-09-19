@@ -28,6 +28,7 @@ public class CrossController {
     @Autowired
     UserService userService;
 
+    //定义分页查询每页数据量
     static final Integer pageSize = 10;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -83,6 +84,11 @@ public class CrossController {
         return "index";
     }
 
+    /**
+     * 分页查询
+     * @param pageNo 页面传来的参数第几页
+     * @return
+     */
     @RequestMapping(value = "/listofpage/{pageNo}", method = RequestMethod.GET)
     @ResponseBody
     public List<Cross> corssListOfPage(@PathVariable("pageNo") Integer pageNo){

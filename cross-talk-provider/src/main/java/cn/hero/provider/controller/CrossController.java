@@ -1,16 +1,14 @@
 package cn.hero.provider.controller;
 
 import cn.hero.model.Cross;
+import cn.hero.model.Page;
 import cn.hero.provider.service.CrossService;
 import cn.hero.provider.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.websocket.server.PathParam;
@@ -30,8 +28,10 @@ public class CrossController {
     @Autowired
     UserService userService;
 
+    static final Integer pageSize = 10;
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addCross(@PathParam("content") String content, @PathParam("userName") String userName, Model model){
+    public String addCross(@PathParam("content") String content, @PathParam("userName") String userName,RedirectAttributes attributes){
 
         System.out.println("content: " + content + "-- userName: " + userName);
         Date creatTime1 = new Date();
@@ -42,8 +42,8 @@ public class CrossController {
         cross1.setCreatTime(creatTime1);
         cross1.setGreatNumber(0);
         crossService.addCross(cross1);
-        model.addAttribute("userName", userName);
-        return "redirect:/?userName=" + userName;
+        attributes.addFlashAttribute("userName", userName);
+        return "redirect:/cross/list/";
     }
 
     /**
@@ -71,7 +71,6 @@ public class CrossController {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-//    @ResponseBody
     public String crossList(Model model,@ModelAttribute(value = "userName") String userName){
         List<Cross> crossList = crossService.crossList();
         System.out.println("list:--" + userName);
@@ -83,4 +82,20 @@ public class CrossController {
         model.addAttribute("userName", userName);
         return "index";
     }
+
+    @RequestMapping(value = "/listofpage/{pageNo}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Cross> corssListOfPage(@PathVariable("pageNo") Integer pageNo){
+        Page page = new Page();
+        page.setPageNo(pageNo);
+        page.setPageSize(pageSize);
+        page.setPageStart((pageNo - 1)*pageSize);
+        return crossService.crossListOfPage(page);
+    }
+
 }
+//pageNo pageStart pageSize=10
+//1 0
+//2 10
+//3 20
+//        (pageNo - 1)*pageSize

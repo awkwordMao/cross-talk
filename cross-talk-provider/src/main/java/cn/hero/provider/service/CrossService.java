@@ -1,7 +1,9 @@
 package cn.hero.provider.service;
 
 import cn.hero.model.Cross;
+import cn.hero.model.Page;
 import cn.hero.provider.db.dao.CrossMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,9 @@ public class CrossService {
 
     public Cross findById(Integer crossId){
         return crossMapper.findById(crossId);
+    }
+
+    public List<Cross> crossListOfPage(Page page){
+        return crossMapper.findCrossOfPage(page);
     }
 }

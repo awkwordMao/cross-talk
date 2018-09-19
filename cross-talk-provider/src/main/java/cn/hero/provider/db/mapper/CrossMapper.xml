@@ -24,4 +24,8 @@
     <select id="findById" resultMap="BaseResultMap">
         select * from tb_cross_talk where cross_id = #{crossId}
     </select>
+
+    <select id="findCrossOfPage" resultMap="BaseResultMap">
+        select * from tb_cross_talk limit #{pageStart}, #{pageSize}
+    </select>
 </mapper>

@@ -1,6 +1,7 @@
 package cn.hero.provider.db.dao;
 
 import cn.hero.model.Cross;
+import cn.hero.model.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;
@@ -21,4 +22,6 @@ public interface CrossMapper {
     List<Cross> findAllCross();
 
     Cross findById(Integer crossId);
+
+    List<Cross> findCrossOfPage(Page page);
 }

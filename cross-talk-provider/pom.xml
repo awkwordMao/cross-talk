@@ -10,8 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cross-talk-provider</artifactId>
-
+    <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>cn.hero</groupId>
             <artifactId>cross-talk-model</artifactId>
@@ -39,14 +44,29 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
     </dependencies>
 
     <build>
         <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
             <!--mavan编译时，将src/main/java/**/*.xml的文件引入，没有这一步会报错；
             另一种解决办法是将 **mapper.xml放在resources目录下-->
             <resource>
                 <directory>src/main/java</directory>
+
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
@@ -56,5 +76,24 @@
                 <!--<directory>src/main/resources</directory>-->
             <!--</resource>-->
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>cn.hero.provider.ProviderApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>

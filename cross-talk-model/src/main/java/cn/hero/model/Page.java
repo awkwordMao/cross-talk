@@ -32,7 +32,7 @@ public class Page {
         return pageStart;
     }
 
-    public void setPageStart(Integer pageStart) {
-        this.pageStart = pageStart;
+    public void setPageStart(Integer pageNo, Integer pageSize) {
+        this.pageStart = (pageNo - 1)*pageSize;
     }
 }

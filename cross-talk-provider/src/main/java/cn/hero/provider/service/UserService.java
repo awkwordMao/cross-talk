@@ -2,23 +2,20 @@ package cn.hero.provider.service;
 
 import cn.hero.model.User;
 import cn.hero.provider.db.dao.UserMapper;
+import cn.hero.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * user 服务
  */
-@Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    UserMapper userMapper;
 
-    public int insertUser(User user){
-        return userMapper.insertUser(user);
-    }
+    int insertUser(User user);
 
-    public User getUserByName(String name){
-        return userMapper.getUserByName(name);
-    }
+    Result<User> checkLogin(String name, String password, HttpServletRequest request);
+
 }

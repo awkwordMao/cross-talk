@@ -1,5 +1,6 @@
 package cn.hero.provider.controller;
 
+import com.sun.org.apache.bcel.internal.generic.GETFIELD;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +20,15 @@ public class InitController {
      * @return
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String init(@PathParam("userName") String userName, Model model, RedirectAttributes attributes){
-        System.out.println(userName);
-//        model.addAttribute("userName", userName);
-        attributes.addFlashAttribute("userName", userName);
-        return "redirect:/cross/list/";
+    public String init(){
+        return "index";
     }
 
     /**
      * 登录界面
      * @return
      */
-    @GetMapping("/tologin")
+    @GetMapping(value = "/tologin")
     public String tologin(){
         return "login";
     }
@@ -48,13 +46,7 @@ public class InitController {
      * @return
      */
     @GetMapping("/toaddcross")
-    public String toAddCross(@PathParam("userName") String userName, Model model){
-        System.out.println("-----------------" + userName);
-        if(("").equals(userName)){
-            return "login";
-        }else{
-            model.addAttribute("userName", userName);
-            return "addcross";
-        }
+    public String toAddCross(){
+        return "addcross";
     }
 }

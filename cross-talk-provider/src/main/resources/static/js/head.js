@@ -1,3 +1,40 @@
+$(document).ready(function() {
+    $("#main").click(toMain);
+    $("#top10").click(toMain);
+    $("#cross").click(toMain);
+    $("#addcross").click(toAddCross);
+    $("#toregist").click(toRegist);
+    $("#img").click(toImg);
+    $("#tologin").click(toLogin);
+
+    // alert(session.getAttribute("name"));
+    // sessiongName=session.getAttribute("name");
+    // if(!sessionName==null){
+    //     alert(sessionName);
+    //     $(".lg").css('display', 'none');
+    //     $("#myself").text=sessionName;
+    // }
+});
+
+function toLogin() {
+    window.location.href="/tologin";
+}
+function toMain() {
+    window.location.href="/";
+}
+function toAddCross() {
+    window.location.href="/toaddcross";
+}
+function toRegist() {
+
+}
+function toImg() {
+
+}
+
+
+
+
 
 /**
  * 显示QQ二维码
@@ -58,8 +95,11 @@ function showMe() {
 /**
  * 判断是否登录，如果登录，将"登录"、"注册" 替换为 "欢迎：userName
  */
-window.onload=function(){
-    if($("#temp").text() !== ''){
-        $(".lg").css('display','none');
-    }
-}
+// window.onload=function(){
+//     if($("#temp").text() !== ''){
+//         $(".lg").css('display','none');
+//     }
+// }
+
+
+

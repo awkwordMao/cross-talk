@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>cross-talk</title>
-    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
 </head>
+<script type="text/javascript" src="jquery/jquery-3.3.1.min.js" th:src="@{/jquery/jquery-3.3.1.min.js}"
+        charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/js/head.js}"></script>
 <script type="text/javascript" src="../layui/layui.js" th:src="@{/layui/layui.js}" charset="utf-8"></script>
-<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js" th:src="@{/jquery/jquery-3.3.1.min.js}" charset="utf-8"></script>
 <body>
 <div class="layui-layout-admin">
     <!--引入导航代码-->
@@ -15,47 +16,51 @@
 </div>
 <div class="layui-container">
 
-    <div th:each="cross : ${crossList}">
+    <div>
         <div class="layui-card">
-            <div style="display: none" th:text="${cross.crossId}"></div>
-            <div class="layui-card-body" th:text="${cross.content}">
+            <div style="display: none"></div>
+            <div id="content" class="layui-card-body">
 
             </div>
-            <div style="color: mediumturquoise">
-                <i id="greatNumber" class="layui-icon layui-icon-star">
-                    <a th:href="@{/cross/update(crossId=${cross.crossId},userName=${userName})}" th:text="'赞一下：' + ${cross.greatNumber}"></a>
-                </i>
-                <!--<i class="layui-icon layui-icon-star">
-                    <a name="crossId" href="javascript:void(0)" onclick="getGreatNumber()" th:href="" th:text="'赞一下：' + ${cross.greatNumber}"></a>
-                </i>-->
-            </div>
+            <i class="layui-icon layui-icon-star">
+                <a name="crossId" onclick="getGreatNumber()"></a>
+            </i>
         </div>
     </div>
 </div>
+<div>
+    <button id="shouye" class="layui-btn" value="1">首页</button>
+    <button id="pre" class="layui-btn" value="">上一页</button>
+    <button id="next" class="layui-btn" value="">下一页</button>
+    <button id="weiye" class="layui-btn" value="">尾页</button>
+</div>
+</div>
 </body>
+<script type="text/javascript" src="js/index.js"></script>
 <!--//注意：导航 依赖 element 模块，否则无法进行功能性操作-->
 <script type="text/javascript" th:inline="javascript">
-    layui.use(['carousel', 'form', 'layer', 'element'], function(){
+    layui.use(['carousel', 'form', 'layer', 'element'], function () {
         var carousel = layui.carousel,
             form = layui.form,
             layer = layui.layer,
             element = layui.element;
     });
-//    function getGreatNumber() {
-//        $.ajax({
-//            url: '/cross/update',
-//            type: 'get',
-//            data: {
-//                crossId: $(a[name=crossId]).val()
-//            },
-//            dataType: 'json',
-//            success:function (result) {
-//                alert(result.greatNumber);
-//
-//            }
-//
-//        })
-//    }
+
+    function getGreatNumber() {
+        $.ajax({
+            url: '/cross/update',
+            type: 'get',
+            data: {
+                crossId: $(a[name = crossId]).val()
+            },
+            dataType: 'json',
+            success: function (result) {
+                alert(result.greatNumber);
+
+            }
+
+        })
+    }
 
 </script>
 </html>

@@ -4,6 +4,7 @@ import cn.hero.model.Cross;
 import cn.hero.model.Page;
 import cn.hero.provider.service.CrossService;
 import cn.hero.provider.service.UserService;
+import cn.hero.util.Result;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,15 +73,8 @@ public class CrossController {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String crossList(Model model,@ModelAttribute(value = "userName") String userName){
-        List<Cross> crossList = crossService.crossList();
-        System.out.println("list:--" + userName);
-        if(userName == null){
-            userName = "";
-        }
-        System.out.println(userName);
-        model.addAttribute("crossList", crossList);
-        model.addAttribute("userName", userName);
+    public String crossList(){
+
         return "index";
     }
 
@@ -89,14 +83,16 @@ public class CrossController {
      * @param pageNo 页面传来的参数第几页
      * @return
      */
-    @RequestMapping(value = "/listofpage/{pageNo}", method = RequestMethod.GET)
+    @RequestMapping(value = "/listofpage", method = RequestMethod.GET)
     @ResponseBody
-    public List<Cross> corssListOfPage(@PathVariable("pageNo") Integer pageNo){
+    public Result<List<Cross>> corssListOfPage(@PathParam("pageNo") Integer pageNo){
+        Result<List<Cross>> result = new Result<List<Cross>>();
         Page page = new Page();
         page.setPageNo(pageNo);
         page.setPageSize(pageSize);
-        page.setPageStart((pageNo - 1)*pageSize);
-        return crossService.crossListOfPage(page);
+        page.setPageStart(pageNo, pageSize);
+        result = crossService.crossListOfPage(page);
+        return result;
     }
 
 }
